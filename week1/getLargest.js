@@ -115,6 +115,38 @@ class DSA {
         return true;
     }
 
+    validPrentheses(str) {
+        console.log("test");
+        // ({[()]})
+        // ({[()()()]})
+        let stack = [];
+        stack.push();
+        stack.pop();
+        // let keyMapper = {
+        //     ')':'(',
+        //     '}':'{',
+        //     ']':'['
+        // }
+         let keyMapper = {
+            '(':')',
+            '{':'}',
+            '[': ']'
+        }
+        let keys = ['(', '{', '['];
+        for(let i =0 ; i<str.length; i++) {
+            console.log(stack);
+            if(keys.includes(str.charAt(i))) {
+                stack.push(str.charAt(i));
+            }
+            else {
+                if(str.charAt(i)!==keyMapper[stack.pop()])return false;
+            }
+        }
+        if(stack.length===0)return true;
+        console.log("gsgsg");
+        return false;
+    }
+
 }
 
 let t1 = new DSA();
@@ -126,4 +158,6 @@ let t1 = new DSA();
 // console.log(t1.findDuplicatesWithoutSorting([1, 3, 4, 2, 2, 19, 10, 19, 19]));
 // console.log(t1.findDuplicatesWithoutSortingwithMao([1, 3, 4, 2, 2, 19, 10, 19, 19]));
 // t1.frequencyCharaterr("fkajfafaf");
-console.log(t1.anagramCheck("listen", "listenn"))
+// console.log(t1.anagramCheck("listen", "listenn"))
+// console.log(t1.anagramCheck("({[()]})"));
+console.log(t1.validPrentheses( "({[()]})"));
