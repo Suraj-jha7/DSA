@@ -9,7 +9,22 @@
 // Input: "swiss"
 // Output: 'w'
 
+// ✅ 3. Reverse words in a sentence
 
+// Input: "I love Node.js"
+// Output: "Node.js love I"
+
+
+// ✅ 4. Find missing number in sequence
+
+// Input: [1, 2, 4, 5, 6]
+// Output: 3
+
+
+// ✅ 5. Flatten nested array
+
+// Input: [1, [2, [3, 4], 5], 6]
+// Output: [1, 2, 3, 4, 5, 6]
 
 class Test {
     removeDuplicates (arr) {
@@ -70,12 +85,44 @@ class Test {
         }
     }
 
+    removeDuplicate(arr){
+        let ans = [];
+        for(let i = 0; i<arr.length; i++) {
+            if(ans.indexOf(arr[i])==-1) ans.push(arr[i]);
+        }
+        return ans;
+    }
+
+    reverseSentance(str) {
+        // let ans = "";
+        // for(let i = 0; i<str.length; i++) {
+        //     ans  = str[i]+ans;
+        // }
+        // console.log(ans);
+        let ans = str.split(" ").reverse().join(" ");
+       console.log(ans);
+    }
+
+    findMissing(arr) {
+        for(let i = 0 ;i<arr.length;i++) {
+            if(i+1 !=arr[i])return i+1;
+        }
+        return -1;
+    }
+
+    flattenArray(arr) {
+        return arr.flat(Infinity);
+    }
 }
 
-let arr = [1, 2, 2, 3, 4, 4, 5];
+let arr = [1, 2, 4, 5, 6];
 let t1 = new Test();
 // console.log(t1.removeDuplicates(arr));
 
 // console.log(t1.removeDuplicatesWithoutSet(arr));
 // console.log(t1.removeDuplicatess(arr));
-t1.findNonRepeatingcharacter("swiss");
+// t1.findNonRepeatingcharacter("swiss");
+// console.log(t1.removeDuplicate(arr));
+// t1.reverseSentance("I love Node.js")
+// console.log(t1.findMissing(arr));
+console.log(t1.flattenArray([1, [2, [3, 4], 5], 6]));
